@@ -5,9 +5,6 @@ CONFIG -= qt
 
 SOURCES += main.cpp
 
-include(deployment.pri)
-qtcAddDeployment()
-
 HEADERS += \
     coord.h
 
