@@ -6,8 +6,7 @@ using namespace std;
 
 ofstream fout;
 
-TField::TField()
-{
+TField::TField() {
     coord.p[0] = R;
     coord.p[1] = 0;
     coord.p[2] = 0;
@@ -16,8 +15,7 @@ TField::TField()
     //speed.p[2] = 0;
 }
 
-void TField::calculateSpeed_Up(float err[3], float(& errorSpeedUp)[3])
-{
+void TField::CalculateSpeedUp(float err[3], float(& errorSpeedUp)[3]) {
     float vectorR = sqrt(coord.p[0]*coord.p[0] + coord.p[1]*coord.p[1] + (err[0]*err[0] + err[1]*err[1]));
     float vectorA = -K/(vectorR * vectorR * vectorR);
     for (int l = 0; l < 2; l++) {
@@ -26,8 +24,7 @@ void TField::calculateSpeed_Up(float err[3], float(& errorSpeedUp)[3])
     }
 }
 //компенсация суммирования по Шевчуку
-float TField::TwoSum(float a, float b, float& error,  bool isNull)
-{
+float TField::TwoSum(float a, float b, float& error,  bool isNull) {
     float x = a + b;
     float b_virt = x - a;
     float a_virt = x - b_virt;
@@ -43,8 +40,7 @@ float TField::TwoSum(float a, float b, float& error,  bool isNull)
 }
 
 
-void  TField::calculatedCoord(float time, long long i)
-{
+void  TField::CalculatedCoord(float time, long long i) {
     float error[3] = {0,0,0};
     float errorSpeedUp[3] = {0,0,0};
     float errorSpeed[3] = {0,0,0};
@@ -61,7 +57,7 @@ void  TField::calculatedCoord(float time, long long i)
     speedUP.p[2] = 0;
     int k = 0;
     for (j = 0; j < i; j++) {
-        calculateSpeed_Up(error, errorSpeedUp);
+        CalculateSpeedUp(error, errorSpeedUp);
         if (k == 10) {
             for (int l = 0; l < 2; l++) {
                 coord.p[l] = TwoSum(coord.p[l], error[l], error[l], true);
@@ -83,8 +79,7 @@ void  TField::calculatedCoord(float time, long long i)
     }
 }
 
-int main()
-{
+int main() {
     fout.open("float_test31.txt");
     TField field;
     fout << field.T  << "\t" << field.R << "\t" << field.K << std::endl;
@@ -95,7 +90,7 @@ int main()
     long long i = 100000;
     for (;  i < 10000000000; i+= 1000) {
         float time = field.T/(float)i;
-        field.calculatedCoord(time, i);
+        field.CalculatedCoord(time, i);
         //fout << field.coord.p[0] << "\t" << field.coord.p[1] << "\t";
         //fout  << (field.coord.p[0] - resultx)/resultx << "\t" << (field.coord.p[1] - resulty)/resulty << ";" << i << std::endl;
         fout << sqrt((-resultx + field.coord.p[0])*(-resultx + field.coord.p[0])

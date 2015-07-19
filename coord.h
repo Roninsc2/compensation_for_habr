@@ -8,10 +8,10 @@ class TField
 
 public:
     TField();
-    void calculatedCoord(float dt, long long i);
+    void CalculatedCoord(float dt, long long i);
 
 public:
-    void calculateSpeed_Up(float err[3], float(& errorSpeedUp)[3]);
+    void CalculateSpeedUp(float err[3], float(& errorSpeedUp)[3]);
     float TwoSum(float a, float b, float& error, bool isNull);
 
 
