@@ -16,7 +16,7 @@ TField::TField()
     //speed.p[2] = 0;
 }
 
-void TField::calculateSpeed_Up(float err[3], float(& errorSpeedUp)[3], int k)
+void TField::calculateSpeed_Up(float err[3], float(& errorSpeedUp)[3])
 {
     float vectorR = sqrt(coord.p[0]*coord.p[0] + coord.p[1]*coord.p[1] + (err[0]*err[0] + err[1]*err[1]));
     float vectorA = -K/(vectorR * vectorR * vectorR);
@@ -61,7 +61,7 @@ void  TField::calculatedCoord(float time, long long i)
     speedUP.p[2] = 0;
     int k = 0;
     for (j = 0; j < i; j++) {
-        calculateSpeed_Up(error, errorSpeedUp, k);
+        calculateSpeed_Up(error, errorSpeedUp);
         if (k == 10) {
             for (int l = 0; l < 2; l++) {
                 coord.p[l] = TwoSum(coord.p[l], error[l], error[l], true);

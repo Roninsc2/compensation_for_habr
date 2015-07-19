@@ -11,7 +11,7 @@ public:
     void calculatedCoord(float dt, long long i);
 
 public:
-    void calculateSpeed_Up(float err[3], float(& errorSpeedUp)[3], int k);
+    void calculateSpeed_Up(float err[3], float(& errorSpeedUp)[3]);
     float TwoSum(float a, float b, float& error, bool isNull);
 
 
