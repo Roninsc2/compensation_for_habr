@@ -11,8 +11,11 @@ public:
     void CalculatedCoord(float dt, long long i);
 
 public:
-    void CalculateSpeedUp(float err[3], float(& errorSpeedUp)[3]);
+    void CalculateSpeedUp(float err[3], float err2[3], float(& errorSpeedUp3)[3], float(& errorSpeedUp)[3]);
     float TwoSum(float a, float b, float& error, bool isNull);
+    void Split(float a, int s, float& a_hi, float& a_lo);
+    float TwoProduct(float a, float b, float& err);
+    void Compensation(float  tempResult, float  input, float  *result, float  *error);
 
 
 public:
@@ -38,5 +41,4 @@ public:
 };
 
 #endif // COORD
-
 

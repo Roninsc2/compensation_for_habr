@@ -8,5 +8,6 @@ SOURCES += main.cpp
 HEADERS += \
     coord.h
 
-
 QMAKE_CXXFLAGS += -std=c++11
+
+
