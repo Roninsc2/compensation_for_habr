@@ -6,8 +6,7 @@ using namespace std;
 
 ofstream fout;
 
-TField::TField()
-{
+TField::TField() {
     coord.p[0] = R;
     coord.p[1] = 0;
     coord.p[2] = 0;
@@ -24,8 +23,7 @@ void TField::Split(float a, int s, float& a_hi, float& a_lo)
     a_lo = a - a_hi;
 }
 
-float TField::TwoProduct(float a, float b, float& err)
-{
+float TField::TwoProduct(float a, float b, float& err) {
     float x = a*b;
     float a_hi, a_low, b_hi, b_low;
     Split(a, 16, a_hi, a_low);
@@ -39,8 +37,7 @@ float TField::TwoProduct(float a, float b, float& err)
 
 }
 
-void TField::CalculateSpeedUp(float err[3], float err2[3], float(& errorSpeedUp3)[3], float(& errorSpeedUp)[3])
-{
+void TField::CalculateSpeedUp(float err[3], float err2[3], float(& errorSpeedUp3)[3], float(& errorSpeedUp)[3]) {
     //вычисляю ускорение. vectorR - радиус вектор, вычисляется с учитываением погрешности координаты
     //vectorR = sqrt(координата_x^2 + координата_y^2) - общий вид
     float input[3] = {0,0,0};
@@ -190,8 +187,7 @@ void  TField::CalculatedCoord(float time, long long i) {
     }
 }
 
-int main()
-{
+int main() {
     fout.open("float_test322.txt");
     TField field;
     fout << field.T  << "\t" << field.R << "\t" << field.K << std::endl;
