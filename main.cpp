@@ -188,7 +188,7 @@ void  TField::CalculatedCoord(float time, long long i) {
 }
 
 int main() {
-    fout.open("float_test322.txt");
+    fout.open("float_test31.txt");
     TField field;
     fout << field.T  << "\t" << field.R << "\t" << field.K << std::endl;
     float resultx = cos(field.T*(field.speed.p[1]/field.R))*field.R;
