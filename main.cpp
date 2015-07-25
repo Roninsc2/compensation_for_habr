@@ -34,7 +34,7 @@ float TField::TwoProduct(float a, float b, float& err)
     err1 = x - (a_hi*b_hi);
     err2 = err1 - (a_low*b_hi);
     err3 = err2 - (a_hi*b_low);
-    err -= ((a_low * b_low) - err3);
+    err += ((a_low * b_low) - err3);
     return x;
 
 }
